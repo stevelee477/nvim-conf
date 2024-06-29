@@ -40,6 +40,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{
+		event = "VeryLazy",
 		"folke/lazydev.nvim",
 		ft = "lua", -- only load on lua files
 		opts = {
@@ -81,7 +82,7 @@ require("lazy").setup({
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-					vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+					-- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
 					vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
 					vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
 					vim.keymap.set("n", "<leader>wl", function()
@@ -233,7 +234,17 @@ require("lazy").setup({
 		tag = '0.1.8',
 		dependencies = { 'nvim-lua/plenary.nvim' },
 		lazy = true,
-	}
+	},
+	{
+		event = "VeryLazy",
+		"tpope/vim-fugitive",
+		cmd = "Git",
+		config = function()
+			-- convert
+			vim.cmd.cnoreabbrev([[git Git]])
+			vim.cmd.cnoreabbrev([[gp Git push]])
+		end,
+	},
 })
 
 -- colorscheme
