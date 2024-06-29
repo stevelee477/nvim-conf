@@ -245,10 +245,21 @@ require("lazy").setup({
 			vim.cmd.cnoreabbrev([[gp Git push]])
 		end,
 	},
+	{
+		event = "VeryLazy",
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	},
+	{
+		"rhysd/conflict-marker.vim",
+		event = "VeryLazy",
+	},
 })
 
 -- colorscheme
-vim.cmd.colorscheme("base16-tender")
+vim.cmd.colorscheme("base16-gruvbox-dark-soft")
 
 require("mason").setup()
 require("mason-lspconfig").setup()
