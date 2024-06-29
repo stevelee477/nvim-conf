@@ -20,6 +20,8 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", opt)
 vim.keymap.set("n", "<C-k>", "<C-w>k", opt)
 vim.keymap.set("n", "<Leader>v", "<C-w>v", opt)
 vim.keymap.set("n", "<Leader>s", "<C-w>s", opt)
+vim.keymap.set("n", "<Leader>[", "<C-o>", opt)
+vim.keymap.set("n", "<Leader>]", "<C-i>", opt)
 -- https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
 -- vim.keymap.set("n", "j", [[v:count ? 'j' : 'gj']], { noremap = true, expr = true })
 -- vim.keymap.set("n", "k", [[v:count ? 'k' : 'gk']], { noremap = true, expr = true })
@@ -42,8 +44,16 @@ require("lazy").setup({
 		lazy = true,
 	},
 	{
+		cmd="Telescope",
+		keys = {
+			{ "<leader>p", ":Telescope find_files<CR>", desc = "find files" },
+			{ "<leader>P", ":Telescope live_grep<CR>", desc = "grep file" },
+			{ "<leader>rs", ":Telescope resume<CR>", desc = "resume" },
+			{ "<leader>q", ":Telescope oldfiles<CR>", desc = "oldfiles" },
+		},
 		'nvim-telescope/telescope.nvim', tag = '0.1.8',
-      		dependencies = { 'nvim-lua/plenary.nvim' }
-    }
+      		dependencies = { 'nvim-lua/plenary.nvim' },
+		lazy = true,
+	}
 })
 vim.cmd.colorscheme("base16-tender")
