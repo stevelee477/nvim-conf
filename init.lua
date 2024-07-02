@@ -261,7 +261,40 @@ require("lazy").setup({
 		config = function()
 			require('Navigator').setup()
 		end
-	}
+	},
+	{
+		keys = {
+			{ "<leader>t", ":NERDTreeToggle<CR>", desc = "toggle nerdtree" },
+			{ "<leader>l", ":NERDTreeFind<CR>",   desc = "nerdtree find" },
+		},
+		cmd = { "NERDTreeToggle", "NERDTree", "NERDTreeFind" },
+		"preservim/nerdtree",
+		config = function()
+			vim.cmd([[
+				" enable line numbers
+				let NERDTreeShowLineNumbers=1
+				" make sure relative line numbers are used
+				autocmd FileType nerdtree setlocal relativenumber
+		]])
+		end,
+		dependencies = {
+			"Xuyuanp/nerdtree-git-plugin",
+			"ryanoasis/vim-devicons",
+		},
+	},
+	-- 	{
+	-- 		"folke/which-key.nvim",
+	-- 		event = "VeryLazy",
+	-- 		init = function()
+	-- 			vim.o.timeout = true
+	-- 			vim.o.timeoutlen = 300
+	-- 		end,
+	-- 		opts = {
+	-- 			-- your configuration comes here
+	-- 			-- or leave it empty to use the default settings
+	-- 			-- refer to the configuration section below
+	-- 		}
+	-- 	}
 })
 
 -- colorscheme
